@@ -7,8 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FF2A3379">
-        <ListBox x:Name="listAnalyzer" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" Width="367" Margin="10,32,0,22"/>
-        <ListBox x:Name="listChannel" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Right" Width="367" Margin="0,32,22,22"/>
-
+        <ListBox x:Name="listAnalyzer" ItemsSource="{Binding Analyzers}"
+SelectedItem="{Binding SelectedAnalyzer}" HorizontalAlignment="Left" Width="367" Margin="10,32,0,22">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Name}" />
+                        <TextBlock Text="{Binding Path=Type}" />
+                        <TextBlock Text="{Binding Path=StatusA}" />
+                        <TextBlock Text="{Binding Path=MeasureInterval}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="listChannel" ItemsSource="{Binding Channels, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedChannel}" DataContext="{Binding SelectedAnalyzer}"
+                 HorizontalAlignment="Right" Width="367" Margin="0,32,22,22">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBox FontSize="18" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Text="{Binding Path=StatusC, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Text="{Binding Path=IsHot, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

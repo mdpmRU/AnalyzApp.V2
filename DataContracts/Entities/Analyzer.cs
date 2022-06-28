@@ -4,19 +4,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataContracts.Entities.Enums;
+using Services;
 
 namespace DataContracts.Entities
 {
-    public class Analyzer
+    public class Analyzer : NotifyPropertyChanged
     {
-        public string Name { get; set; }
+        private string _name;
+        private StatusAnalyzer _statusA;
+        private string _type;
+        private int _measureInterval;
+        private List<Channel> _channels;
 
-        public StatusAnalyzer StatusA { get; set; }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
+        }
 
-        public string Type { get; set; }
+        public StatusAnalyzer StatusA
+        {
+            get { return _statusA; }
+            set
+            {
+                _statusA = value; OnPropertyChanged("StatusA");
+            }
+        }
 
-        public int MeasureInterval { get; set; }
-        
-        public List<Channel> Channels { get; set; }
+        public string Type
+        {
+            get { return _type; }
+            set
+            {
+                _type = value; OnPropertyChanged("Type");
+            }
+        }
+
+        public int MeasureInterval
+        {
+            get { return _measureInterval; }
+            set
+            {
+                _measureInterval = value; OnPropertyChanged("MeasureInterval");
+            }
+        }
+
+        public List<Channel> Channels
+        {
+            get { return _channels; }
+            set
+            {
+                _channels = value;
+                OnPropertyChanged("Channels");
+            }
+        }
     }
 }

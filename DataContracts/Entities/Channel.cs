@@ -4,15 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataContracts.Entities.Enums;
+using Services;
 
 namespace DataContracts.Entities
 {
-    public class Channel
+    public class Channel : NotifyPropertyChanged
     {
-        public string Name { get; set; }
+        private string _name;
+        private StatusChannel _statusC;
+        private int _isHot;
 
-        public StatusChannel StatusC { get; set; }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
+        }
 
-        public int IsHot { get; set; }
+        public StatusChannel StatusC
+        {
+            get { return _statusC; }
+            set
+            {
+                _statusC = value; OnPropertyChanged("StatusC");
+            }
+        }
+
+        public int IsHot
+        {
+            get { return _isHot; }
+            set
+            {
+                _isHot = value;
+                OnPropertyChanged("IsHot");
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AnalyzApp.V2.ViewModels;
 
 namespace AnalyzApp.V2
 {
@@ -23,6 +24,7 @@ namespace AnalyzApp.V2
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ApplicationViewModel();
         }
     }
 }
