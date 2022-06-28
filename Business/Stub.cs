@@ -26,7 +26,7 @@ namespace Business
 
                 }
             },
-             new Analyzer()
+            new Analyzer()
             {
                 Name = "SecondAlyzer",
                 Type = "SecondType",
