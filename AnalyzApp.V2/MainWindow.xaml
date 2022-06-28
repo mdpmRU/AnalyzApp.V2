@@ -1,0 +1,14 @@
+﻿<Window x:Class="AnalyzApp.V2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnalyzApp.V2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FF2A3379">
+        <ListBox x:Name="listAnalyzer" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" Width="367" Margin="10,32,0,22"/>
+        <ListBox x:Name="listChannel" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Right" Width="367" Margin="0,32,22,22"/>
+
+    </Grid>
+</Window>
