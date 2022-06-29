@@ -12,7 +12,7 @@ namespace DataContracts.Entities
     {
         private string _name;
         private StatusChannel _statusC;
-        private int _isHot;
+        private int? _isHot;
 
         public string Name
         {
@@ -33,7 +33,7 @@ namespace DataContracts.Entities
             }
         }
 
-        public int IsHot
+        public int? IsHot
         {
             get { return _isHot; }
             set

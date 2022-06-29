@@ -11,6 +11,7 @@ namespace AnalyzApp.V2.ViewModels
 {
     public class ApplicationViewModel : NotifyPropertyChanged
     {
+        public AnalyzerService analyzerService = new();
         public struct Item //определил тип
         {
             public Analyzer selectedAnalyzer;
@@ -54,7 +55,7 @@ namespace AnalyzApp.V2.ViewModels
         }
         public ApplicationViewModel()
         {
-            Analyzers = Business.Stub.Analyzers;
+            Analyzers = analyzerService.CheckStatus(Stub.Analyzers);
         }
     }
 }

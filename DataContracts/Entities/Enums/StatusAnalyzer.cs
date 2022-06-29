@@ -8,8 +8,8 @@ namespace DataContracts.Entities.Enums
 {
     public enum StatusAnalyzer
     {
-        Active,
+        Locked,
         Warning,
-        Locked
+        Active
     }
 }

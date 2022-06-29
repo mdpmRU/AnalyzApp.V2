@@ -8,8 +8,8 @@ namespace DataContracts.Entities.Enums
 {
     public enum StatusChannel
     {
+        NoData,
         Normal,
         Warning,
-        NoData
     }
 }
