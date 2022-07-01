@@ -12,19 +12,16 @@ namespace Business
                 Name = "FirstAlyzer",
                 Type = "FirstType",
                 MeasureInterval = 99,
-                //StatusA = StatusAnalyzer.Warning,
                 Channels = new List<Channel>()
                 {
                     new Channel()
                     {
                         Name = "FirstChannel",
-                        StatusC = StatusChannel.Warning,
                         IsHot = 100,
                     },
                     new Channel()
                     {
                         Name = "SecondChannel",
-                        StatusC = StatusChannel.Normal,
                         IsHot = 89,
                     }
 
@@ -35,20 +32,17 @@ namespace Business
                 Name = "SecondAlyzer",
                 Type = "SecondType",
                 MeasureInterval = 89,
-                //StatusA = StatusAnalyzer.Active,
                 Channels = new List<Channel>()
                 {
                     new Channel()
                     {
                         Name = "1Channel",
                         IsHot = 13,
-                        StatusC = StatusChannel.NoData,
                     },
                     new Channel()
                     {
                         Name = "2Channel",
                         IsHot = null,
-                        StatusC = StatusChannel.NoData,
                     }
                 }
             }

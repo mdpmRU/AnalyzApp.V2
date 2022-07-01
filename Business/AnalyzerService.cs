@@ -14,11 +14,8 @@ namespace Business
         {
             foreach (var analyzer in list)
             {
+                ApproveStatusC(analyzer);
                 ApproveStatusA(analyzer);
-                //if (analyzer.StatusA == null)
-                //{
-                    
-                //}
             }
             return list;
         }
@@ -29,6 +26,7 @@ namespace Business
             var checkdata = 0;
             foreach (var channel in analyzer.Channels)
             {
+                
                 if (channel.StatusC != StatusChannel.Warning)
                 {
                     if (channel.StatusC == StatusChannel.NoData)
@@ -39,29 +37,6 @@ namespace Business
                     checkwarning = true;
                     break;
                 }
-
-
-                //if (channel.StatusC == StatusChannel.Warning)
-                //{
-                //    analyzer.StatusA = StatusAnalyzer.Warning;
-                //}
-                //else
-                //{
-
-                //}
-                //switch (channel.StatusC)
-                //{
-                //    case StatusChannel.Warning:
-                //        analyzer.StatusA = StatusAnalyzer.Warning;
-                //        break;
-                //    case StatusChannel.Normal:
-                //        analyzer.StatusA = StatusAnalyzer.Active;
-                //        break;
-                //    default:
-                //        analyzer.StatusA = StatusAnalyzer.Locked;
-                //        break;
-                //}
-
             }
 
             if (checkwarning == true)
@@ -74,12 +49,27 @@ namespace Business
             return analyzer;
         }
 
-        //private Channel ApproveStatusC(Channel channel)
-        //{
-        //    switch ()
-        //    {
-                
-        //    }
-        //}
+        private Analyzer ApproveStatusC(Analyzer analyzer)
+        {
+            foreach (var channel in analyzer.Channels)
+            {
+                if (channel.IsHot < analyzer.MeasureInterval)
+                {
+                    channel.StatusC = StatusChannel.Normal;
+                    break;
+                }
+                else
+                {
+                    if (channel.IsHot > analyzer.MeasureInterval)
+                    {
+                        channel.StatusC = StatusChannel.Warning;
+                    }
+                    if (channel.IsHot == null)
+                        channel.StatusC = StatusChannel.NoData;
+                }
+
+            }
+            return analyzer;
+        }
     }
 }
