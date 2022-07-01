@@ -11,15 +11,15 @@ namespace AnalyzApp.V2.ViewModels
 {
     public class ApplicationViewModel : NotifyPropertyChanged
     {
+        private Analyzer selectedAnalyzer;
+        private Channel selectedChannel;
+
         public AnalyzerService analyzerService = new();
         public struct Item //определил тип
         {
             public Analyzer selectedAnalyzer;
             public Channel selectedChannel;
         }
-
-        Analyzer selectedAnalyzer;
-        Channel selectedChannel;
         public Item selectedItem;
         public List<Analyzer> Analyzers { get; set; }
 
