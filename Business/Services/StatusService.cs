@@ -1,32 +1,22 @@
-﻿using DataContracts.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataContracts.Entities;
 using DataContracts.Entities.Enums;
 
-namespace Business
+namespace Business.Services
 {
-    public class AnalyzerService
+    public class StatusService
     {
-        public List<Analyzer> CheckStatus(List<Analyzer> list)
-        {
-            foreach (var analyzer in list)
-            {
-                ApproveStatusC(analyzer);
-                ApproveStatusA(analyzer);
-            }
-            return list;
-        }
-
-        private Analyzer ApproveStatusA(Analyzer analyzer)
+        internal Analyzer ApproveStatusA(Analyzer analyzer)
         {
             var checkwarning = false;
             var checkdata = 0;
             foreach (var channel in analyzer.Channels)
             {
-                
+
                 if (channel.StatusC != StatusChannel.Warning)
                 {
                     if (channel.StatusC == StatusChannel.NoData)
@@ -49,7 +39,7 @@ namespace Business
             return analyzer;
         }
 
-        private Analyzer ApproveStatusC(Analyzer analyzer)
+        internal Analyzer ApproveStatusC(Analyzer analyzer)
         {
             foreach (var channel in analyzer.Channels)
             {

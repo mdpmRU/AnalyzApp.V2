@@ -6,21 +6,30 @@ using System.Threading.Tasks;
 using Services;
 using Business;
 using DataContracts.Entities;
+using Business.Services;
 
-namespace AnalyzApp.V2.ViewModels
+namespace Business.ViewModels
 {
     public class ApplicationViewModel : NotifyPropertyChanged
     {
         private Analyzer selectedAnalyzer;
         private Channel selectedChannel;
 
+        public ApplicationViewModel()
+        {
+            Analyzers = analyzerService.CheckStatus(Stub.Analyzers);
+        }
+
         public AnalyzerService analyzerService = new();
-        public struct Item //определил тип
+
+        public struct Item
         {
             public Analyzer selectedAnalyzer;
             public Channel selectedChannel;
         }
+
         public Item selectedItem;
+
         public List<Analyzer> Analyzers { get; set; }
 
         public Analyzer SelectedAnalyzer
@@ -52,10 +61,6 @@ namespace AnalyzApp.V2.ViewModels
                 selectedItem = value;
                 OnPropertyChanged("SelectedItem");
             }
-        }
-        public ApplicationViewModel()
-        {
-            Analyzers = analyzerService.CheckStatus(Stub.Analyzers);
         }
     }
 }

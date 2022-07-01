@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FF2A3379">
         <ListBox x:Name="listAnalyzer" ItemsSource="{Binding Analyzers}"
-SelectedItem="{Binding SelectedAnalyzer}" HorizontalAlignment="Left" Width="367" Margin="10,32,0,22">
+SelectedItem="{Binding SelectedAnalyzer}" Margin="10,32,0,200" HorizontalAlignment="Left" Width="367">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -21,7 +21,7 @@ SelectedItem="{Binding SelectedAnalyzer}" HorizontalAlignment="Left" Width="367"
             </ListBox.ItemTemplate>
         </ListBox>
         <ListBox x:Name="listChannel" ItemsSource="{Binding Channels, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedChannel}" DataContext="{Binding SelectedAnalyzer}"
-                 HorizontalAlignment="Right" Width="367" Margin="0,32,22,22">
+                 HorizontalAlignment="Right" Width="367" Margin="0,205,22,22">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -32,5 +32,23 @@ SelectedItem="{Binding SelectedAnalyzer}" HorizontalAlignment="Left" Width="367"
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StackPanel Margin="0,32,22,0" HorizontalAlignment="Right" Width="367" DataContext="{Binding SelectedAnalyzer}" Height="168" VerticalAlignment="Top">
+            <TextBlock Text="Выбранный элемент" FontWeight="Bold" />
+            <TextBlock Text="Название" />
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Тип" />
+            <TextBox Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Интервал измерения" />
+            <TextBox Text="{Binding MeasureInterval, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Статус" />
+            <TextBox Text="{Binding Path=StatusA}" />
+            <TextBlock Text="Каналы" />
+        </StackPanel>
+        <Menu x:Name="menu" Height="27" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" Command="{Binding OpenCommand}" />
+                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" />
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
