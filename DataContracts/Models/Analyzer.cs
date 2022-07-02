@@ -11,55 +11,49 @@ namespace DataContracts.Models
 {
     public class Analyzer
     {
-        private string _name;
-        private StatusAnalyzer _statusA;
-        private string _type;
-        private int _measureInterval;
-        private ObservableCollection<Channel> _channels;
+        public string Name { get; set; }
+        //{
+        //    get { return _name; }
+        //    set
+        //    {
+        //        _name = value;
+        //    }
+        //}
 
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                _name = value;
-            }
-        }
+        public StatusAnalyzer StatusA { get; set; }
+        //{
+        //    get { return _statusA; }
+        //    set
+        //    {
+        //        _statusA = value;
+        //    }
+        //}
 
-        public StatusAnalyzer StatusA
-        {
-            get { return _statusA; }
-            set
-            {
-                _statusA = value;
-            }
-        }
+        public string Type { get; set; }
+        //{
+        //    get { return _type; }
+        //    set
+        //    {
+        //        _type = value;
+        //    }
+        //}
 
-        public string Type
-        {
-            get { return _type; }
-            set
-            {
-                _type = value;
-            }
-        }
+        public int MeasureInterval { get; set; }
+        //{
+        //    get { return _measureInterval; }
+        //    set
+        //    {
+        //        _measureInterval = value;
+        //    }
+        //}
 
-        public int MeasureInterval
-        {
-            get { return _measureInterval; }
-            set
-            {
-                _measureInterval = value;
-            }
-        }
-
-        public ObservableCollection<Channel> Channels
-        {
-            get { return _channels; }
-            set
-            {
-                _channels = value;
-            }
-        }
+        public ObservableCollection<Channel> Channels { get; set; }
+        //{
+        //    get { return _channels; }
+        //    set
+        //    {
+        //        _channels = value;
+        //    }
+        //}
     }
 }

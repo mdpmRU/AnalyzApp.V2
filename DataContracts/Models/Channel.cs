@@ -10,35 +10,10 @@ namespace DataContracts.Models
 {
     public class Channel
     {
-        private string _name;
-        private StatusChannel _statusC;
-        private int? _isHot;
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                _name = value;
-            }
-        }
+        public StatusChannel StatusC { get; set; }
 
-        public StatusChannel StatusC
-        {
-            get { return _statusC; }
-            set
-            {
-                _statusC = value;
-            }
-        }
-
-        public int? IsHot
-        {
-            get { return _isHot; }
-            set
-            {
-                _isHot = value;
-            }
-        }
+        public int? IsHot { get; set; }
     }
 }
