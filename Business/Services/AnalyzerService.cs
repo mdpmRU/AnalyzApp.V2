@@ -1,10 +1,11 @@
-﻿using DataContracts.Entities;
+﻿using DataContracts.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataContracts.Entities.Enums;
+using DataContracts.Models.Enums;
+using DataContracts.Models;
 
 namespace Business.Services
 {

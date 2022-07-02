@@ -5,122 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 using Services;
 using Business;
-using DataContracts.Entities;
+using DataContracts.Models;
 using Business.Services;
 using Contracts;
 using AnalyzApp.V2.Service;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 
 namespace AnalyzApp.V2.ViewModels
 {
-    public class ApplicationViewModel : INotifyPropertyChanged
+    public class ApplicationViewModel : NotifyPropertyChanged
     {
-        IFileService fileService;
-        IDialogService dialogService;
 
-        private Analyzer selectedAnalyzer;
-        private Channel selectedChannel;
-        public AnalyzerService analyzerService = new();
-        public Item selectedItem;
 
-        public ApplicationViewModel(IDialogService dialogService, IFileService fileService)
-        {
-            this.dialogService = dialogService;
-            this.fileService = fileService;
-            Analyzers = analyzerService.CheckStatus(fileService.Open("D:\\1Diplom\\Text\\Сдавать\\Мунерман\\anal.xml"));
-            //Analyzers = new List<Analyzer>();
-        }
 
-        public struct Item
-        {
-            public Analyzer selectedAnalyzer;
-            public Channel selectedChannel;
-        }
+        Analyzer selectedAnalyzer;
 
-        public List<Analyzer> Analyzers { get; set; }
-
+        public ObservableCollection<Analyzer> Analyzers { get; set; }
         public Analyzer SelectedAnalyzer
         {
             get { return selectedAnalyzer; }
             set
             {
                 selectedAnalyzer = value;
-                selectedItem.selectedAnalyzer = value;
                 OnPropertyChanged("SelectedAnalyzer");
             }
         }
 
-        public Channel SelectedChannel
-        {
-            get { return selectedChannel; }
-            set
-            {
-                selectedChannel = value;
-                selectedItem.selectedChannel = value;
-                OnPropertyChanged("SelectedChannel");
-            }
-        }
-        public Item SelectedItem
-        {
-            get { return selectedItem; }
-            set
-            {
-                selectedItem = value;
-                OnPropertyChanged("SelectedItem");
-            }
-        }
 
-        private RelayCommand openCommand;
-        public RelayCommand OpenCommand
-        {
-            get
-            {
-                return openCommand ??
-                  (openCommand = new RelayCommand(obj =>
-                  {
-                      try
-                      {
-                          if (dialogService.OpenFileDialog() == true)
-                          {
-                              var analysers = fileService.Open(dialogService.FilePath);
-                              Analyzers.Clear();
-                              foreach (var p in analysers)
-                                  Analyzers.Add(p);
-                              //dialogService.ShowMessage("Файл открыт");
-                          }
-                      }
-                      catch (Exception ex)
-                      {
-                          dialogService.ShowMessage(ex.Message);
-                      }
-                  }));
-            }
-        }
-
-        private RelayCommand saveCommand;
-        public RelayCommand SaveCommand
-        {
-            get
-            {
-                return saveCommand ??
-                  (saveCommand = new RelayCommand(obj =>
-                  {
-                      try
-                      {
-                          if (dialogService.SaveFileDialog() == true)
-                          {
-                              fileService.Save(dialogService.FilePath, Analyzers);
-                          }
-                      }
-                      catch (Exception ex)
-                      {
-                          dialogService.ShowMessage(ex.Message);
-                      }
-                  }));
-            }
-        }
-
+        //Кнопки для Analyzer 
         private RelayCommand addAnalyzer;
         public RelayCommand AddAnalyzer
         {
@@ -130,18 +44,41 @@ namespace AnalyzApp.V2.ViewModels
                   (addAnalyzer = new RelayCommand(obj =>
                   {
                       Analyzer analyzer = new Analyzer();
-                      analyzer.Channels = new List<Channel>();
+                      analyzer.Channels = new ObservableCollection<Channel>();
                       Analyzers.Insert(0, analyzer);
                       SelectedAnalyzer = analyzer;
                   }));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        private RelayCommand removeAnalyzer;
+        public RelayCommand RemoveAnalyzer
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            get
+            {
+                return removeAnalyzer ??
+                  (removeAnalyzer = new RelayCommand(obj =>
+                  {
+                      Analyzer analyzer = obj as Analyzer;
+                      if (analyzer != null)
+                      {
+                          Analyzers.Remove(analyzer);
+                      }
+                  },
+                 (obj) => Analyzers.Count > 0));
+            }
+        }
+
+        public ApplicationViewModel()
+        {
+            Analyzers = new ObservableCollection<Analyzer>();
+        }
+        public void ClearAnalyzers()
+        {
+            Analyzers.Clear();
+        }
+        public void AddAnalyzers(Analyzer analyzer)
+        {
+            Analyzers.Add(analyzer);
         }
 
     }

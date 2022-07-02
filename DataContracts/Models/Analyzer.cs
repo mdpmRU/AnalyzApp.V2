@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataContracts.Entities.Enums;
+using DataContracts.Models.Enums;
 using Services;
+using System.Collections.ObjectModel;
 
-namespace DataContracts.Entities
+namespace DataContracts.Models
 {
-    public class Analyzer : NotifyPropertyChanged
+    public class Analyzer
     {
         private string _name;
         private StatusAnalyzer _statusA;
         private string _type;
         private int _measureInterval;
-        private List<Channel> _channels;
+        private ObservableCollection<Channel> _channels;
 
         public string Name
         {
@@ -22,7 +23,6 @@ namespace DataContracts.Entities
             set
             {
                 _name = value;
-                OnPropertyChanged("Name");
             }
         }
 
@@ -31,7 +31,7 @@ namespace DataContracts.Entities
             get { return _statusA; }
             set
             {
-                _statusA = value; OnPropertyChanged("StatusA");
+                _statusA = value;
             }
         }
 
@@ -40,7 +40,7 @@ namespace DataContracts.Entities
             get { return _type; }
             set
             {
-                _type = value; OnPropertyChanged("Type");
+                _type = value;
             }
         }
 
@@ -49,17 +49,16 @@ namespace DataContracts.Entities
             get { return _measureInterval; }
             set
             {
-                _measureInterval = value; OnPropertyChanged("MeasureInterval");
+                _measureInterval = value;
             }
         }
 
-        public List<Channel> Channels
+        public ObservableCollection<Channel> Channels
         {
             get { return _channels; }
             set
             {
                 _channels = value;
-                OnPropertyChanged("Channels");
             }
         }
     }

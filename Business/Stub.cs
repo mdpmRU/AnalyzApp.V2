@@ -1,5 +1,6 @@
-﻿using DataContracts.Entities;
-using DataContracts.Entities.Enums;
+﻿using DataContracts.Models;
+using DataContracts.Models.Enums;
+using System.Collections.ObjectModel;
 
 namespace Business
 {
@@ -12,7 +13,7 @@ namespace Business
                 Name = "FirstAlyzer",
                 Type = "FirstType",
                 MeasureInterval = 99,
-                Channels = new List<Channel>()
+                Channels = new ObservableCollection<Channel>()
                 {
                     new Channel()
                     {
@@ -32,7 +33,7 @@ namespace Business
                 Name = "SecondAlyzer",
                 Type = "SecondType",
                 MeasureInterval = 89,
-                Channels = new List<Channel>()
+                Channels = new ObservableCollection<Channel>()
                 {
                     new Channel()
                     {

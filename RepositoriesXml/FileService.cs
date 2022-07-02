@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Contracts;
-using DataContracts.Entities;
+using DataContracts.Models;
 using Business;
 using Business.Services;
 using System.Xml;
@@ -28,7 +28,7 @@ namespace RepositoriesXml
                 XAttribute AName = analyzer.Attribute("Name");
                 XAttribute Type = analyzer.Attribute("Type");
                 XAttribute MeasureInterval = analyzer.Attribute("MeasureInterval");
-                List<Channel> channels = new List<Channel>();
+                ObservableCollection<Channel> channels = new ObservableCollection<Channel>();
                 foreach (XElement channel in analyzer.Elements("Channel"))
                 {
                     XAttribute CName = channel.Attribute("Name");

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataContracts.Entities.Enums;
+using DataContracts.Models.Enums;
 using Services;
 
-namespace DataContracts.Entities
+namespace DataContracts.Models
 {
-    public class Channel : NotifyPropertyChanged
+    public class Channel
     {
         private string _name;
         private StatusChannel _statusC;
@@ -20,7 +20,6 @@ namespace DataContracts.Entities
             set
             {
                 _name = value;
-                OnPropertyChanged("Name");
             }
         }
 
@@ -29,7 +28,7 @@ namespace DataContracts.Entities
             get { return _statusC; }
             set
             {
-                _statusC = value; OnPropertyChanged("StatusC");
+                _statusC = value;
             }
         }
 
@@ -39,7 +38,6 @@ namespace DataContracts.Entities
             set
             {
                 _isHot = value;
-                OnPropertyChanged("IsHot");
             }
         }
     }
