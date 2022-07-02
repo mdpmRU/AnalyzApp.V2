@@ -2,19 +2,16 @@
 using Contracts;
 using RepositoriesXml;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnalyzApp.V2.Service
 {
-    public class FileMenuService
+    public class FileCommand
     {
         IFileService fileService;
         IDialogService dialogService;
         ApplicationViewModel viewModel;
-        public FileMenuService(ApplicationViewModel _viewModel)
+        public FileCommand(ApplicationViewModel _viewModel)
         {
             viewModel = _viewModel;
             fileService = new FileService();
@@ -34,6 +31,7 @@ namespace AnalyzApp.V2.Service
                           if (dialogService.OpenFileDialog() == true)
                           {
                               var analysers = fileService.Open(dialogService.FilePath);
+                              //Добавить инвок
                               viewModel.ClearAnalyzers();
                               foreach (var p in analysers)
                                   viewModel.AddAnalyzers(p);
@@ -72,6 +70,5 @@ namespace AnalyzApp.V2.Service
                   }));
             }
         }
-
     }
 }

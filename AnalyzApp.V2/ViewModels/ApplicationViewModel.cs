@@ -7,22 +7,22 @@ using Services;
 using Business;
 using DataContracts.Models;
 using Business.Services;
-using Contracts;
 using AnalyzApp.V2.Service;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 
 namespace AnalyzApp.V2.ViewModels
 {
     public class ApplicationViewModel : NotifyPropertyChanged
     {
-
-
-
         Analyzer selectedAnalyzer;
 
+        public ApplicationViewModel()
+        {
+            Analyzers = new ObservableCollection<Analyzer>();
+        }
+
         public ObservableCollection<Analyzer> Analyzers { get; set; }
+
         public Analyzer SelectedAnalyzer
         {
             get { return selectedAnalyzer; }
@@ -33,8 +33,6 @@ namespace AnalyzApp.V2.ViewModels
             }
         }
 
-
-        //Кнопки для Analyzer 
         private RelayCommand addAnalyzer;
         public RelayCommand AddAnalyzer
         {
@@ -68,10 +66,6 @@ namespace AnalyzApp.V2.ViewModels
             }
         }
 
-        public ApplicationViewModel()
-        {
-            Analyzers = new ObservableCollection<Analyzer>();
-        }
         public void ClearAnalyzers()
         {
             Analyzers.Clear();

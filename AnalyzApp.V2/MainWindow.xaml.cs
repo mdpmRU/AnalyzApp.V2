@@ -24,12 +24,13 @@ namespace AnalyzApp.V2
     public partial class MainWindow : Window
     {
         ApplicationViewModel viewModel;
-        FileMenuService fileMenuService;
+        FileCommand fileMenuService;
+        CollectionCommand collectionService;
         public MainWindow()
         {
             InitializeComponent();
             viewModel = new ApplicationViewModel();
-            fileMenuService = new FileMenuService(viewModel);
+            fileMenuService = new FileCommand(viewModel);
             DataContext = viewModel;
             OpenFile.Command = fileMenuService.OpenCommand;
             SaveFile.Command = fileMenuService.SaveCommand;

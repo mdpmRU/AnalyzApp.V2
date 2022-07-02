@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DataContracts.Models;
 using DataContracts.Models.Enums;
-using DataContracts.Models;
 
 namespace Business.Services
 {
@@ -29,7 +28,6 @@ namespace Business.Services
                     break;
                 }
             }
-
             if (checkwarning == true)
                 analyzer.StatusA = StatusAnalyzer.Warning;
             else
@@ -58,7 +56,6 @@ namespace Business.Services
                     if (channel.IsHot == 0)
                         channel.StatusC = StatusChannel.NoData;
                 }
-
             }
             return analyzer;
         }
