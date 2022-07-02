@@ -12,48 +12,13 @@ namespace DataContracts.Models
     public class Analyzer
     {
         public string Name { get; set; }
-        //{
-        //    get { return _name; }
-        //    set
-        //    {
-        //        _name = value;
-        //    }
-        //}
 
         public StatusAnalyzer StatusA { get; set; }
-        //{
-        //    get { return _statusA; }
-        //    set
-        //    {
-        //        _statusA = value;
-        //    }
-        //}
 
         public string Type { get; set; }
-        //{
-        //    get { return _type; }
-        //    set
-        //    {
-        //        _type = value;
-        //    }
-        //}
 
         public int MeasureInterval { get; set; }
-        //{
-        //    get { return _measureInterval; }
-        //    set
-        //    {
-        //        _measureInterval = value;
-        //    }
-        //}
 
         public ObservableCollection<Channel> Channels { get; set; }
-        //{
-        //    get { return _channels; }
-        //    set
-        //    {
-        //        _channels = value;
-        //    }
-        //}
     }
 }
