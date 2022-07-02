@@ -42,7 +42,7 @@ namespace Business
                     new Channel()
                     {
                         Name = "2Channel",
-                        IsHot = null,
+                        IsHot = 0,
                     }
                 }
             }

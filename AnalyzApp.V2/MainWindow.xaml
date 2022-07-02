@@ -44,8 +44,8 @@ SelectedItem="{Binding SelectedAnalyzer}" Margin="10,32,0,200" HorizontalAlignme
             <TextBox Text="{Binding Path=StatusA}" />
             <TextBlock Text="Каналы" />
         </StackPanel>
-        <Menu x:Name="menu" Height="27" VerticalAlignment="Top">
-            <MenuItem Header="Файл">
+        <Menu x:Name="menu" Height="24" VerticalAlignment="Top">
+            <MenuItem Header="Файл" FontSize="14">
                 <MenuItem Header="Открыть" Command="{Binding OpenCommand}" />
                 <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" />
             </MenuItem>

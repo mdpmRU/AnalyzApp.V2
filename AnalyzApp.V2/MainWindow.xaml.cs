@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Business.ViewModels;
+using AnalyzApp.V2.ViewModels;
+using AnalyzApp.V2.Service;
+using RepositoriesXml;
 
 namespace AnalyzApp.V2
 {
@@ -24,7 +26,7 @@ namespace AnalyzApp.V2
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ApplicationViewModel();
+            DataContext = new ApplicationViewModel(new DialogService(), new FileService());
         }
     }
 }

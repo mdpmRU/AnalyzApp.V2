@@ -54,7 +54,7 @@ namespace Business.Services
                     {
                         channel.StatusC = StatusChannel.Warning;
                     }
-                    if (channel.IsHot == null)
+                    if (channel.IsHot == 0)
                         channel.StatusC = StatusChannel.NoData;
                 }
 
