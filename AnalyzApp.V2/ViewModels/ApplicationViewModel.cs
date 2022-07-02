@@ -9,10 +9,12 @@ using DataContracts.Entities;
 using Business.Services;
 using Contracts;
 using AnalyzApp.V2.Service;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace AnalyzApp.V2.ViewModels
 {
-    public class ApplicationViewModel : NotifyPropertyChanged
+    public class ApplicationViewModel : INotifyPropertyChanged
     {
         IFileService fileService;
         IDialogService dialogService;
@@ -26,7 +28,8 @@ namespace AnalyzApp.V2.ViewModels
         {
             this.dialogService = dialogService;
             this.fileService = fileService;
-            Analyzers = analyzerService.CheckStatus(Stub.Analyzers);
+            Analyzers = analyzerService.CheckStatus(fileService.Open("D:\\1Diplom\\Text\\Сдавать\\Мунерман\\anal.xml"));
+            //Analyzers = new List<Analyzer>();
         }
 
         public struct Item
@@ -117,5 +120,29 @@ namespace AnalyzApp.V2.ViewModels
                   }));
             }
         }
+
+        private RelayCommand addAnalyzer;
+        public RelayCommand AddAnalyzer
+        {
+            get
+            {
+                return addAnalyzer ??
+                  (addAnalyzer = new RelayCommand(obj =>
+                  {
+                      Analyzer analyzer = new Analyzer();
+                      analyzer.Channels = new List<Channel>();
+                      Analyzers.Insert(0, analyzer);
+                      SelectedAnalyzer = analyzer;
+                  }));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
     }
 }

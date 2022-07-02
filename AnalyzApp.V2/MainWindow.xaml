@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AnalyzApp.V2"
+        xmlns:local="clr-namespace:AnalyzApp.V2" xmlns:models="clr-namespace:DataContracts.Entities;assembly=DataContracts" d:DataContext="{d:DesignInstance Type=models:Channel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FF2A3379">
-        <ListBox x:Name="listAnalyzer" ItemsSource="{Binding Analyzers}"
+        <ListBox x:Name="listAnalyzer" ItemsSource="{Binding Analyzers, UpdateSourceTrigger=PropertyChanged}"
 SelectedItem="{Binding SelectedAnalyzer}" Margin="10,32,0,200" HorizontalAlignment="Left" Width="367">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -50,5 +50,6 @@ SelectedItem="{Binding SelectedAnalyzer}" Margin="10,32,0,200" HorizontalAlignme
                 <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" />
             </MenuItem>
         </Menu>
+        <Button x:Name="button" Content="Добавить Анализатор" HorizontalAlignment="Left" Margin="34,311,0,0" VerticalAlignment="Top" Command="{Binding AddAnalyzer}"/>
     </Grid>
 </Window>
