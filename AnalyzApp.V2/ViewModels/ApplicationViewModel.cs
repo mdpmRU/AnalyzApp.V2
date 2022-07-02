@@ -16,9 +16,9 @@ namespace AnalyzApp.V2.ViewModels
     {
         Analyzer selectedAnalyzer;
 
-        public ApplicationViewModel()
+        public ApplicationViewModel(ObservableCollection<Analyzer> analyzers)
         {
-            Analyzers = new ObservableCollection<Analyzer>();
+            Analyzers = analyzers;
         }
 
         public ObservableCollection<Analyzer> Analyzers { get; set; }

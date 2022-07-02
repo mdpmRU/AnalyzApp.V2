@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using AnalyzApp.V2.ViewModels;
 using AnalyzApp.V2.Service;
 using RepositoriesXml;
+using System.Collections.ObjectModel;
+using DataContracts.Models;
 
 namespace AnalyzApp.V2
 {
@@ -29,7 +31,7 @@ namespace AnalyzApp.V2
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new ApplicationViewModel();
+            viewModel = new ApplicationViewModel(new ObservableCollection<Analyzer>());
             fileMenuService = new FileCommand(viewModel);
             DataContext = viewModel;
             OpenFile.Command = fileMenuService.OpenCommand;
