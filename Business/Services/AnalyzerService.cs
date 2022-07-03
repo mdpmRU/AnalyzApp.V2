@@ -10,7 +10,7 @@ using Contracts;
 
 namespace Business.Services
 {
-    public class AnalyzerService : StatusService, IMediator
+    public class AnalyzerService : StatusService
     {
         private IFileService _fileService;
         delegate List<Analyzer> StatusHandler (List<Analyzer> analyzers);
