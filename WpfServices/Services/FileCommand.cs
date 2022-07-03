@@ -10,14 +10,14 @@ namespace WpfServices.Services
 {
     public class FileCommand
     {
-        private AnalyzerService analyzerService;
-        private IDialogService dialogService;
-        private ApplicationViewModel viewModel;
-        public FileCommand(ApplicationViewModel _viewModel, IFileService fileService)
+        private AnalyzerService _analyzerService;
+        private IDialogService _dialogService;
+        private ApplicationViewModel _viewModel;
+        public FileCommand(ApplicationViewModel viewModel, IFileService fileService)
         {
-            viewModel = _viewModel;
-            analyzerService = new AnalyzerService(fileService);
-            dialogService = new DialogService();
+            _viewModel = viewModel;
+            _analyzerService = new AnalyzerService(fileService);
+            _dialogService = new DialogService();
         }
         // команда открытия файла
         private RelayCommand _openCommand;
@@ -30,17 +30,17 @@ namespace WpfServices.Services
                   {
                       try
                       {
-                          if (dialogService.OpenFileDialog() == true)
+                          if (_dialogService.OpenFileDialog() == true)
                           {
-                              var analysers = analyzerService.Open(dialogService.FilePath);
-                              viewModel.ClearAnalyzers();
+                              var analysers = _analyzerService.Open(_dialogService.FilePath);
+                              _viewModel.ClearAnalyzers();
                               foreach (var p in analysers)
-                                  viewModel.AddAnalyzers(p);
+                                  _viewModel.AddAnalyzers(p);
                           }
                       }
                       catch (Exception ex)
                       {
-                          dialogService.ShowMessage(ex.Message);
+                          _dialogService.ShowMessage(ex.Message);
                       }
                   }));
             }
@@ -56,14 +56,14 @@ namespace WpfServices.Services
                   {
                       try
                       {
-                          if (dialogService.SaveFileDialog() == true)
+                          if (_dialogService.SaveFileDialog() == true)
                           {
-                              analyzerService.Save(dialogService.FilePath, viewModel.Analyzers.ToList());
+                              _analyzerService.Save(_dialogService.FilePath, _viewModel.Analyzers.ToList());
                           }
                       }
                       catch (Exception ex)
                       {
-                          dialogService.ShowMessage(ex.Message);
+                          _dialogService.ShowMessage(ex.Message);
                       }
                   }));
             }
