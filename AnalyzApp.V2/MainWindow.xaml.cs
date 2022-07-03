@@ -27,7 +27,6 @@ namespace AnalyzApp.V2
     {
         ApplicationViewModel viewModel;
         FileCommand fileMenuService;
-        CollectionCommand collectionService;
         public MainWindow()
         {
             InitializeComponent();
