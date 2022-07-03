@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Analyzers>
+  <Analyzer Name="FirstAlyzer" Type="FirstType" MeasureInterval="99">
+    <Channel Name="FirstChannel" IsHot="100" />
+    <Channel Name="SecondChannel" IsHot="89" />
+  </Analyzer>
+  <Analyzer Name="SecondAlyzer" Type="SecondType" MeasureInterval="89">
+    <Channel Name="1Channel" IsHot="13" />
+    <Channel Name="2Channel" IsHot="0" />
+  </Analyzer>
+</Analyzers>
