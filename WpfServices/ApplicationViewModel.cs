@@ -30,14 +30,5 @@ namespace WpfServices
                 OnPropertyChanged("SelectedChannel");
             }
         }
-
-        //public void ClearAnalyzers()
-        //{
-        //    Analyzers.Clear();
-        //}
-        //public void AddAnalyzers(Analyzer analyzer)
-        //{
-        //    Analyzers.Add(analyzer);
-        //}
     }
 }
