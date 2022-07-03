@@ -12,7 +12,18 @@ namespace WpfServices.Services
     public class CollectionCommand : NotifyPropertyChanged
     {
         private Analyzer selectedAnalyzer;
+        private Channel selectedChannel;
         public ObservableCollection<Analyzer> Analyzers { get; set; }
+
+        public Channel SelectedChannel
+        {
+            get { return selectedChannel; }
+            set
+            {
+                selectedChannel = value;
+                OnPropertyChanged("SelectedChannel");
+            }
+        }
 
         public Analyzer SelectedAnalyzer
         {
@@ -93,7 +104,7 @@ namespace WpfServices.Services
                                Channel channel = obj as Channel;
                                if (channel != null)
                                {
-                                   SelectedAnalyzer.Channels.Remove(SelectedAnalyzer.SelectedChannel);
+                                   SelectedAnalyzer.Channels.Remove(SelectedChannel);
                                }
                            },
                            (obj) => SelectedAnalyzer.Channels.Count > 0));

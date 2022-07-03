@@ -20,7 +20,8 @@ SelectedItem="{Binding SelectedAnalyzer}" Margin="10,32,0,200" HorizontalAlignme
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox x:Name="listChannel" ItemsSource="{Binding Channels, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedChannel}" DataContext="{Binding SelectedAnalyzer}"
+        <ListBox x:Name="listChannel" ItemsSource="{Binding Channels, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedChannel}"
+                 DataContext="{Binding SelectedAnalyzer}"
                  HorizontalAlignment="Right" Width="367" Margin="0,205,22,22">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -56,7 +57,9 @@ SelectedItem="{Binding SelectedAnalyzer}" Margin="10,32,0,200" HorizontalAlignme
                 Command="{Binding RemoveAnalyzer}" CommandParameter="{Binding SelectedAnalyzer}"/>
         <Button x:Name="AddChannel" Content="Добавить Канал" HorizontalAlignment="Left" Margin="169,309,0,0" VerticalAlignment="Top"
                 Command="{Binding AddChannel}"/>
-        <Button x:Name="DelChannel" Content="Удалить Канал" HorizontalAlignment="Left" Margin="169,0,0,66" Height="20" VerticalAlignment="Bottom"
+        <Button x:Name="DelChannel" Content="Удалить Канал" HorizontalAlignment="Left" Margin="169,0,0,56" Height="20" VerticalAlignment="Bottom"
                 Command="{Binding RemoveChannel}" CommandParameter="{Binding SelectedChannel}" />
+        <Button x:Name="add" Content="Добавить Канал" HorizontalAlignment="Left" Margin="169,309,0,0" VerticalAlignment="Top"
+                Command="{Binding AddChannel}"/>
     </Grid>
 </Window>

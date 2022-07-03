@@ -21,6 +21,5 @@ namespace DataContracts.Models
 
         public ObservableCollection<Channel> Channels { get; set; }
 
-        public Channel SelectedChannel { get; set; }
     }
 }
