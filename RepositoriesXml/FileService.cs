@@ -17,22 +17,22 @@ namespace RepositoriesXml
     {
         public List<Analyzer> Open(string filename)
         {
-            List<Analyzer> analyzers = new List<Analyzer>();//объявление коллекций
-            XDocument doc = XDocument.Load(filename);//Загружаем
-            XElement root = doc.Element("Analyzers");
+            var analyzers = new List<Analyzer>();//объявление коллекций
+            var doc = XDocument.Load(filename);//Загружаем
+            var root = doc.Element("Analyzers");
             foreach (XElement analyzer in root.Elements("Analyzer"))
             {
-                XAttribute AName = analyzer.Attribute("Name");
-                XAttribute Type = analyzer.Attribute("Type");
-                XAttribute MeasureInterval = analyzer.Attribute("MeasureInterval");
+                var aName = analyzer.Attribute("Name");
+                var type = analyzer.Attribute("Type");
+                var measureInterval = analyzer.Attribute("MeasureInterval");
                 ObservableCollection<Channel> channels = new ObservableCollection<Channel>();
-                foreach (XElement channel in analyzer.Elements("Channel"))
+                foreach (var channel in analyzer.Elements("Channel"))
                 {
-                    XAttribute CName = channel.Attribute("Name");
-                    XAttribute IsHot = channel.Attribute("IsHot");
-                    channels.Add(new Channel { Name = CName.Value, IsHot = Int32.Parse(IsHot.Value) });
+                    var cName = channel.Attribute("Name");
+                    var isHot = channel.Attribute("IsHot");
+                    channels.Add(new Channel { Name = cName.Value, IsHot = Int32.Parse(isHot.Value) });
                 }
-                analyzers.Add(new Analyzer { Name = AName.Value, Type = Type.Value, MeasureInterval = Int32.Parse(MeasureInterval.Value), Channels = channels });
+                analyzers.Add(new Analyzer { Name = aName.Value, Type = type.Value, MeasureInterval = Int32.Parse(measureInterval.Value), Channels = channels });
             }
 
 
@@ -41,17 +41,17 @@ namespace RepositoriesXml
 
         public void Save(string filename, List<Analyzer> analyzers)
         {
-            XDocument xdoc = new XDocument();
-            XElement root = new XElement("Analyzers");
+            var xdoc = new XDocument();
+            var root = new XElement("Analyzers");
             foreach (Analyzer item in analyzers)
             {
-                XElement analyzerEL = new XElement("Analyzer");
+                var analyzerEL = new XElement("Analyzer");
                 analyzerEL.Add(new XAttribute("Name", item.Name));
                 analyzerEL.Add(new XAttribute("Type", item.Type));
                 analyzerEL.Add(new XAttribute("MeasureInterval", item.MeasureInterval));
-                foreach (Channel itemCh in item.Channels)
+                foreach (var itemCh in item.Channels)
                 {
-                    XElement channelEL = new XElement("Channel");
+                    var channelEL = new XElement("Channel");
                     channelEL.Add(new XAttribute("Name", itemCh.Name));
                     channelEL.Add(new XAttribute("IsHot", itemCh.IsHot));
                     analyzerEL.Add(channelEL);

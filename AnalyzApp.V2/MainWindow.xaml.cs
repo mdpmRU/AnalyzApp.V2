@@ -25,8 +25,8 @@ namespace AnalyzApp.V2
     /// </summary>
     public partial class MainWindow : Window
     {
-        ApplicationViewModel _viewModel;
-        FileCommand _fileMenuService;
+        private ApplicationViewModel _viewModel;
+        private FileCommand _fileMenuService;
         public MainWindow()
         {
             InitializeComponent();

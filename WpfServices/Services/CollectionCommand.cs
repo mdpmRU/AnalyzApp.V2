@@ -12,7 +12,6 @@ namespace WpfServices.Services
     public class CollectionCommand : NotifyPropertyChanged
     {
         private Analyzer selectedAnalyzer;
-        //Channel selectedChannel;
         public ObservableCollection<Analyzer> Analyzers { get; set; }
 
         public Analyzer SelectedAnalyzer
@@ -24,15 +23,6 @@ namespace WpfServices.Services
                 OnPropertyChanged("SelectedAnalyzer");
             }
         }
-        //public Channel SelectedChannel
-        //{
-        //    get { return selectedChannel; }
-        //    set
-        //    {
-        //        selectedChannel = value;
-        //        OnPropertyChanged("SelectedChannel");
-        //    }
-        //}
 
         private RelayCommand addAnalyzer;
         public RelayCommand AddAnalyzer
@@ -84,7 +74,6 @@ namespace WpfServices.Services
                 return addChannel ??
                        (addChannel = new RelayCommand(obj =>
                            {
-
                                Channel channel = new Channel();
                                SelectedAnalyzer.Channels.Insert(0, channel);
                            }
@@ -108,14 +97,6 @@ namespace WpfServices.Services
                                }
                            },
                            (obj) => SelectedAnalyzer.Channels.Count > 0));
-                //return removeChannel ??
-                //    (removeChannel = new RelayCommand(obj =>
-                //    {
-                //        Channel channel = new Channel();
-                //        SelectedAnalyzer.Channels.Remove(channel);
-
-                //    }
-                //    ));
             }
         }
     }

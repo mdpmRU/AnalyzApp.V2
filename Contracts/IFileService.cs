@@ -9,7 +9,7 @@ namespace Contracts
 {
     public interface IFileService
     {
-        List<Analyzer> Open(string filename);
-        void Save(string filename, List<Analyzer> analyzersList);
+        public List<Analyzer> Open(string filename);
+        public void Save(string filename, List<Analyzer> analyzersList);
     }
 }

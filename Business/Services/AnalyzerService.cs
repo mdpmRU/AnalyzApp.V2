@@ -12,19 +12,19 @@ namespace Business.Services
 {
     public class AnalyzerService : StatusService, IMediator
     {
-        IFileService fileService;
+        private IFileService _fileService;
         public AnalyzerService(IFileService fileService)
         {
-            this.fileService = fileService;
+            this._fileService = fileService;
         }
         public List<Analyzer> Open(string filename)
         {
-           return CheckStatus(fileService.Open(filename));
+           return CheckStatus(_fileService.Open(filename));
         }
 
         public void Save(string filename, List<Analyzer> analyzers)
         {
-            fileService.Save(filename, analyzers);
+            _fileService.Save(filename, analyzers);
         }
 
         private List<Analyzer> CheckStatus(List<Analyzer> list)

@@ -12,27 +12,27 @@ namespace Business.Services
     {
         internal Analyzer ApproveStatusA(Analyzer analyzer)
         {
-            var checkwarning = false;
-            var checkdata = 0;
+            var checkWarning = false;
+            var checkData = 0;
             foreach (var channel in analyzer.Channels)
             {
 
                 if (channel.StatusC != StatusChannel.Warning)
                 {
                     if (channel.StatusC == StatusChannel.NoData)
-                        checkdata++;
+                        checkData++;
                 }
                 else
                 {
-                    checkwarning = true;
+                    checkWarning = true;
                     break;
                 }
             }
-            if (checkwarning == true)
+            if (checkWarning == true)
                 analyzer.StatusA = StatusAnalyzer.Warning;
             else
             {
-                if (checkdata < analyzer.Channels.Count)
+                if (checkData < analyzer.Channels.Count)
                     analyzer.StatusA = StatusAnalyzer.Active;
             }
             return analyzer;

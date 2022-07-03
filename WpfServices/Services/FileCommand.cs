@@ -11,8 +11,8 @@ namespace WpfServices.Services
     public class FileCommand
     {
         private AnalyzerService analyzerService;
-        IDialogService dialogService;
-        ApplicationViewModel viewModel;
+        private IDialogService dialogService;
+        private ApplicationViewModel viewModel;
         public FileCommand(ApplicationViewModel _viewModel, IFileService fileService)
         {
             viewModel = _viewModel;
@@ -20,24 +20,22 @@ namespace WpfServices.Services
             dialogService = new DialogService();
         }
         // команда открытия файла
-        private RelayCommand openCommand;
+        private RelayCommand _openCommand;
         public RelayCommand OpenCommand
         {
             get
             {
-                return openCommand ??
-                  (openCommand = new RelayCommand(obj =>
+                return _openCommand ??
+                  (_openCommand = new RelayCommand(obj =>
                   {
                       try
                       {
                           if (dialogService.OpenFileDialog() == true)
                           {
                               var analysers = analyzerService.Open(dialogService.FilePath);
-                              //Добавить инвок
                               viewModel.ClearAnalyzers();
                               foreach (var p in analysers)
                                   viewModel.AddAnalyzers(p);
-                              //dialogService.ShowMessage("Файл открыт");
                           }
                       }
                       catch (Exception ex)
@@ -47,22 +45,20 @@ namespace WpfServices.Services
                   }));
             }
         }
-        // команда сохранения файла
 
-        private RelayCommand saveCommand;
+        private RelayCommand _saveCommand;
         public RelayCommand SaveCommand
         {
             get
             {
-                return saveCommand ??
-                  (saveCommand = new RelayCommand(obj =>
+                return _saveCommand ??
+                  (_saveCommand = new RelayCommand(obj =>
                   {
                       try
                       {
                           if (dialogService.SaveFileDialog() == true)
                           {
                               analyzerService.Save(dialogService.FilePath, viewModel.Analyzers.ToList());
-                              //dialogService.ShowMessage("Файл сохранен");
                           }
                       }
                       catch (Exception ex)
