@@ -13,13 +13,18 @@ namespace Business.Services
     public class AnalyzerService : StatusService, IMediator
     {
         private IFileService _fileService;
+        delegate List<Analyzer> StatusHandler (List<Analyzer> analyzers);
+
+        private event StatusHandler StatusCheck;
         public AnalyzerService(IFileService fileService)
         {
             this._fileService = fileService;
         }
         public List<Analyzer> Open(string filename)
         {
-           return CheckStatus(_fileService.Open(filename));
+            StatusCheck += CheckStatus;
+            var list = StatusCheck(CheckStatus(_fileService.Open(filename)));
+            return list;
         }
 
         public void Save(string filename, List<Analyzer> analyzers)
