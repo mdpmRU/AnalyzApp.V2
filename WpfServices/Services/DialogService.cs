@@ -2,7 +2,7 @@
 using Microsoft.Win32;
 using System.Windows;
 
-namespace AnalyzApp.V2.Service
+namespace WpfServices.Services
 {
     public class DialogService : IDialogService
     {

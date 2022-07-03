@@ -10,8 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\DataContracts\DataContracts.csproj" />
-    <ProjectReference Include="..\RepositoriesXml\RepositoriesXml.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
+    <ProjectReference Include="..\WpfServices\WpfServices.csproj" />
   </ItemGroup>
 
 </Project>

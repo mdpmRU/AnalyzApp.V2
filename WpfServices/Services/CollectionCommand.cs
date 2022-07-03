@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataContracts.Models;
 
-namespace AnalyzApp.V2.Service
+namespace WpfServices.Services
 {
     public class CollectionCommand
     {

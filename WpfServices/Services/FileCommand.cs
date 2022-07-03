@@ -1,10 +1,10 @@
-﻿using AnalyzApp.V2.ViewModels;
+﻿using WpfServices;
 using Contracts;
 using RepositoriesXml;
 using System;
 using System.Linq;
 
-namespace AnalyzApp.V2.Service
+namespace WpfServices.Services
 {
     public class FileCommand
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace AnalyzApp.V2.Service
+namespace WpfServices.Services
 {
     public class RelayCommand : ICommand
     {

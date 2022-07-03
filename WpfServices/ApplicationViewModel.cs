@@ -7,10 +7,10 @@ using Services;
 using Business;
 using DataContracts.Models;
 using Business.Services;
-using AnalyzApp.V2.Service;
+using WpfServices.Services;
 using System.Collections.ObjectModel;
 
-namespace AnalyzApp.V2.ViewModels
+namespace WpfServices
 {
     public class ApplicationViewModel : NotifyPropertyChanged
     {
