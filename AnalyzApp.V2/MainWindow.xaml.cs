@@ -25,16 +25,16 @@ namespace AnalyzApp.V2
     /// </summary>
     public partial class MainWindow : Window
     {
-        ApplicationViewModel viewModel;
-        FileCommand fileMenuService;
+        ApplicationViewModel _viewModel;
+        FileCommand _fileMenuService;
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new ApplicationViewModel(new ObservableCollection<Analyzer>());
-            fileMenuService = new FileCommand(viewModel);
-            DataContext = viewModel;
-            OpenFile.Command = fileMenuService.OpenCommand;
-            SaveFile.Command = fileMenuService.SaveCommand;
+            _viewModel = new ApplicationViewModel(new ObservableCollection<Analyzer>());
+            _fileMenuService = new FileCommand(_viewModel, new FileService());
+            DataContext = _viewModel;
+            OpenFile.Command = _fileMenuService.OpenCommand;
+            SaveFile.Command = _fileMenuService.SaveCommand;
         }
     }
 }

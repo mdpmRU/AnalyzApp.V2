@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
     <ProjectReference Include="..\DataContracts\DataContracts.csproj" />
+    <ProjectReference Include="..\RepositoriesXml\RepositoriesXml.csproj" />
   </ItemGroup>
 
 </Project>

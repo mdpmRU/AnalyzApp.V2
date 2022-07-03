@@ -3,18 +3,20 @@ using Contracts;
 using RepositoriesXml;
 using System;
 using System.Linq;
+using Business.Services;
+using DataContracts.Models;
 
 namespace WpfServices.Services
 {
     public class FileCommand
     {
-        IFileService fileService;
+        private AnalyzerService analyzerService;
         IDialogService dialogService;
         ApplicationViewModel viewModel;
-        public FileCommand(ApplicationViewModel _viewModel)
+        public FileCommand(ApplicationViewModel _viewModel, IFileService fileService)
         {
             viewModel = _viewModel;
-            fileService = new FileService();
+            analyzerService = new AnalyzerService(fileService);
             dialogService = new DialogService();
         }
         // команда открытия файла
@@ -30,7 +32,7 @@ namespace WpfServices.Services
                       {
                           if (dialogService.OpenFileDialog() == true)
                           {
-                              var analysers = fileService.Open(dialogService.FilePath);
+                              var analysers = analyzerService.Open(dialogService.FilePath);
                               //Добавить инвок
                               viewModel.ClearAnalyzers();
                               foreach (var p in analysers)
@@ -59,7 +61,7 @@ namespace WpfServices.Services
                       {
                           if (dialogService.SaveFileDialog() == true)
                           {
-                              fileService.Save(dialogService.FilePath, viewModel.Analyzers.ToList());
+                              analyzerService.Save(dialogService.FilePath, viewModel.Analyzers.ToList());
                               //dialogService.ShowMessage("Файл сохранен");
                           }
                       }

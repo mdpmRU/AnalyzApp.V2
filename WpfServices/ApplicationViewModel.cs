@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Services;
-using Business;
 using DataContracts.Models;
-using Business.Services;
 using WpfServices.Services;
 using System.Collections.ObjectModel;
 

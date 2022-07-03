@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Contracts;
 using DataContracts.Models;
-using Business;
-using Business.Services;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -17,7 +15,6 @@ namespace RepositoriesXml
 {
     public class FileService : IFileService
     {
-        public AnalyzerService analyzerService = new();
         public List<Analyzer> Open(string filename)
         {
             List<Analyzer> analyzers = new List<Analyzer>();//объявление коллекций
