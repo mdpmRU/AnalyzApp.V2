@@ -41,25 +41,25 @@ namespace RepositoriesXml
 
         public void Save(string filename, List<Analyzer> analyzers)
         {
-            var xdoc = new XDocument();
+            var xDocument = new XDocument();
             var root = new XElement("Analyzers");
             foreach (Analyzer item in analyzers)
             {
-                var analyzerEL = new XElement("Analyzer");
-                analyzerEL.Add(new XAttribute("Name", item.Name));
-                analyzerEL.Add(new XAttribute("Type", item.Type));
-                analyzerEL.Add(new XAttribute("MeasureInterval", item.MeasureInterval));
+                var analyzerEl = new XElement("Analyzer");
+                analyzerEl.Add(new XAttribute("Name", item.Name));
+                analyzerEl.Add(new XAttribute("Type", item.Type));
+                analyzerEl.Add(new XAttribute("MeasureInterval", item.MeasureInterval));
                 foreach (var itemCh in item.Channels)
                 {
-                    var channelEL = new XElement("Channel");
-                    channelEL.Add(new XAttribute("Name", itemCh.Name));
-                    channelEL.Add(new XAttribute("IsHot", itemCh.IsHot));
-                    analyzerEL.Add(channelEL);
+                    var channelEl = new XElement("Channel");
+                    channelEl.Add(new XAttribute("Name", itemCh.Name));
+                    channelEl.Add(new XAttribute("IsHot", itemCh.IsHot));
+                    analyzerEl.Add(channelEl);
                 }
-                root.Add(analyzerEL);
+                root.Add(analyzerEl);
             }
-            xdoc.Add(root);
-            xdoc.Save(filename);
+            xDocument.Add(root);
+            xDocument.Save(filename);
         }
     }
 }
