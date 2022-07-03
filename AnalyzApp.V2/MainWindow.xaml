@@ -57,6 +57,6 @@ SelectedItem="{Binding SelectedAnalyzer}" Margin="10,32,0,200" HorizontalAlignme
         <Button x:Name="AddChannel" Content="Добавить Канал" HorizontalAlignment="Left" Margin="169,309,0,0" VerticalAlignment="Top"
                 Command="{Binding AddChannel}"/>
         <Button x:Name="DelChannel" Content="Удалить Канал" HorizontalAlignment="Left" Margin="169,0,0,66" Height="20" VerticalAlignment="Bottom"
-                Command="{Binding RemoveChannel}" CommandParameter="{Binding SelectedItem}" />
+                Command="{Binding RemoveChannel}" CommandParameter="{Binding SelectedChannel}" />
     </Grid>
 </Window>

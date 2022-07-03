@@ -12,7 +12,7 @@ namespace WpfServices.Services
     public class CollectionCommand : NotifyPropertyChanged
     {
         private Analyzer selectedAnalyzer;
-        Channel selectedChannel;
+        //Channel selectedChannel;
         public ObservableCollection<Analyzer> Analyzers { get; set; }
 
         public Analyzer SelectedAnalyzer
@@ -24,15 +24,15 @@ namespace WpfServices.Services
                 OnPropertyChanged("SelectedAnalyzer");
             }
         }
-        public Channel SelectedChannel
-        {
-            get { return selectedChannel; }
-            set
-            {
-                selectedChannel = value;
-                OnPropertyChanged("SelectedChannel");
-            }
-        }
+        //public Channel SelectedChannel
+        //{
+        //    get { return selectedChannel; }
+        //    set
+        //    {
+        //        selectedChannel = value;
+        //        OnPropertyChanged("SelectedChannel");
+        //    }
+        //}
 
         private RelayCommand addAnalyzer;
         public RelayCommand AddAnalyzer
@@ -84,11 +84,7 @@ namespace WpfServices.Services
                 return addChannel ??
                        (addChannel = new RelayCommand(obj =>
                            {
-                               //Channel channel = obj as Channel;
-                               //if (channel != null)
-                               //{
-                               //    SelectedAnalyzer.Channels.Insert(0, channel);
-                               //}
+
                                Channel channel = new Channel();
                                SelectedAnalyzer.Channels.Insert(0, channel);
                            }
@@ -103,12 +99,12 @@ namespace WpfServices.Services
             {
                 if (SelectedAnalyzer == null) return null;
                 return removeChannel ??
-                       (removeChannel = new RelayCommand(obj =>
+                    (removeChannel = new RelayCommand(obj =>
                            {
                                Channel channel = obj as Channel;
                                if (channel != null)
                                {
-                                   SelectedAnalyzer.Channels.Remove(SelectedChannel);
+                                   SelectedAnalyzer.Channels.Remove(SelectedAnalyzer.SelectedChannel);
                                }
                            },
                            (obj) => SelectedAnalyzer.Channels.Count > 0));

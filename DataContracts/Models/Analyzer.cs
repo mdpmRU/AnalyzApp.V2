@@ -20,5 +20,7 @@ namespace DataContracts.Models
         public int MeasureInterval { get; set; }
 
         public ObservableCollection<Channel> Channels { get; set; }
+
+        public Channel SelectedChannel { get; set; }
     }
 }

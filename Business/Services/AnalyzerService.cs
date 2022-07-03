@@ -10,6 +10,7 @@ namespace Business.Services
 {
     public class AnalyzerService : StatusService
     {
+
         public List<Analyzer> CheckStatus(List<Analyzer> list)
         {
             foreach (var analyzer in list)
