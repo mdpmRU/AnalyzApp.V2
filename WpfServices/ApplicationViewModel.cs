@@ -14,21 +14,21 @@ namespace WpfServices
 {
     public class ApplicationViewModel : CollectionCommand
     {
-        Channel selectedChannel;
-        private CollectionCommand _collectionCommand;
+        //Channel selectedChannel;
+        //private CollectionCommand _collectionCommand;
 
         public ApplicationViewModel(ObservableCollection<Analyzer> analyzers)
         {
             Analyzers = analyzers;
         }
-        public Channel SelectedChannel
-        {
-            get { return selectedChannel; }
-            set
-            {
-                selectedChannel = value;
-                OnPropertyChanged("SelectedChannel");
-            }
-        }
+        //public Channel SelectedChannel
+        //{
+        //    get { return selectedChannel; }
+        //    set
+        //    {
+        //        selectedChannel = value;
+        //        OnPropertyChanged("SelectedChannel");
+        //    }
+        //}
     }
 }
